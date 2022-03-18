@@ -5,23 +5,17 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.time.Duration;
-import java.util.List;
 
 public class BaseTest {
     protected String HOMEPAGELINK = "https://the-internet.herokuapp.com/";
-    private WebDriver chromeDriver;
     protected TestingHomePage testingHomePage;
     protected WebDriverWait webDriverWait;
+    private WebDriver chromeDriver;
 
     @BeforeAll
-    static void initAll(){
+    static void initAll () {
         WebDriverManager.chromedriver().setup();
     }
 
@@ -30,16 +24,10 @@ public class BaseTest {
 //        System.setProperty("webdriver.chrome.driver", "resources/chromedriver.exe");
 //        this.chromeDriver = new ChromeDriver();
         this.chromeDriver = WebDriverManager.chromedriver().create();
-        this.chromeDriver.get(HOMEPAGELINK);
-        testingHomePage = new TestingHomePage(chromeDriver);
+        this.chromeDriver.get(this.HOMEPAGELINK);
+        this.testingHomePage = new TestingHomePage(this.chromeDriver);
     }
 
-    protected WebElement getWebElement (By elementToFind) {
-        return this.chromeDriver.findElement(elementToFind);
-    }
-    protected List<WebElement> getWebElements (By elementToFind) {
-        return this.chromeDriver.findElements(elementToFind);
-    }
 
     @AfterEach
     void tearDown () {
