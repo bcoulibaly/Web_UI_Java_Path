@@ -91,7 +91,7 @@ class CompleteWebFormTest extends BaseTest {
     }
 
     @ParameterizedTest
-    @CsvSource(value = {"John,Doe,Lipsum,College,MALE,4, Thanks for submitting your form, The form was successfully " +
+    @CsvSource(value = {"John,Doe,Lipsum,College,MALE,4,Thanks for submitting your form,The form was successfully " +
             "submitted!"})
     void testAllElementOnPage (@Nonnull String expFirstname, @Nonnull String expLastname, @Nonnull String expJobTitle,
                                @Nonnull EducationLevel expEduLevel, @Nonnull Gender expGender, int expIndexOfYOE,

@@ -8,6 +8,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
 import javax.annotation.Nonnull;
+import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
@@ -143,6 +144,7 @@ public class CompleteWebForm {
      */
     public List<String> clickSubmitButton () {
         this.webDriver.findElement(SUBMIT_BUTTON).click();
+        this.webDriver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(30));
         return List.of(this.webDriver.findElement(By.cssSelector("div.container > h1")).getText(),
                        this.webDriver.findElement(By.cssSelector("div.container > div.alert")).getText());
     }
